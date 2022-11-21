@@ -1,0 +1,165 @@
+@font-face {
+    font-family: Poppins;
+    src: url(../../fonts/Poppins-Regular.ttf);
+}
+@font-face {
+    font-family: Poppins-bold;
+    src: url(../../fonts/Poppins-Bold.ttf);
+}
+body{
+    margin: 0;
+    background-color: #7655b3;
+    overflow: hidden;
+}
+*{
+    font-family: 'Poppins';
+}
+a{
+    text-decoration: none;
+}
+
+
+/* side bar class */
+.sidebar{
+    top: 0;
+    height: 100vh;
+    position: fixed;
+    background-color: #5b3a94;
+    padding: 20px;
+}
+.sidebar-header{
+    display: flex;
+    align-items: center;
+}
+.sidebar-items-container{
+    height: 85vh;
+    margin-top: 40px;
+    position: relative;
+}
+.items{
+    padding: 5px;
+    margin-top: 35px;
+    display: flex;
+    align-items: center;
+    color: white;
+}
+.active{
+    border-radius: 5px;
+    background-color: #8760ca;
+}
+.logout{
+    position: absolute;
+    bottom: 30px;
+}
+.items-title{
+    margin-top: 2px;
+    margin-left: 10px;
+}
+/* end of sidebar */
+
+/* content container */
+.content-container{
+    margin-top: 40px;
+    margin-left: 120px;
+    display: flex;
+}
+.content-left{
+    margin-right: 50px;
+    width: 75%;
+}
+.welcome-card{
+    background-color: #5b3a94;
+    padding: 20px;
+    border-radius: 15px;
+    color: white;
+}
+.welcome-title{
+    font-size: 1.3em;
+    font-family: 'Poppins-bold';
+}
+.welcome-subtitle{
+    margin-top: 15px;
+    font-size: 1.1em;
+}
+.content-right{
+    width: 20%;
+}
+/* end of welcome card */
+
+
+/* total-container */
+.total-container{
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.total-card{
+    width: 30%;
+    border-radius: 15px;
+    padding: 25px 20px 25px 20px;
+    display: flex;
+    align-items: center;
+    background-color: #5b3a94;
+    color: white;
+}
+.avatar{
+    border-radius: 5px;
+    padding: 10px;
+    display: flex;
+    background-color: #60baca;
+    color: white;
+    margin-right: 10px;
+}
+.total-title{
+    font-family: 'Poppins-bold';
+    font-size: 1.3em;
+}
+.total-subtitle{
+    margin-top: -5px;
+}
+/* end of total */
+
+/* list container */
+.list-container{
+    height: 60vh;
+    border-radius: 15px;
+    background-color: #5b3a94;
+    padding: 20px;
+    margin-top: 20px;
+    position: relative;
+}
+.list-header-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+}
+.tabel-container{
+    margin-top: 20px;
+    height: 55vh;
+    overflow-y: scroll;
+}
+.tabel-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.tabel-container {
+-ms-overflow-style: none;  /* IE and Edge */
+scrollbar-width: none;  /* Firefox */
+}
+.tabel-container table{
+    width: 100%;
+    text-align: left;
+    color: white;
+    border-collapse: separate;
+    border-spacing: 0px 5px;
+}
+.tabel-container table td, th{
+    padding: 15px 10px 15px 10px;
+}
+.tabel-container table a{
+    cursor: pointer;
+    color: white;
+}
