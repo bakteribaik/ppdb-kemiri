@@ -71,36 +71,39 @@
                     <div class="list-title">Daftar pendaftar peserta didik baru</div>
                     <div class="tool-container">
                         <input type="text" name="" id="" placeholder="Cari data peserta">
-                        <input type="submit" name="" id="" value="Cari">
+                        <button class="search-btn">Cari</button>
                     </div>
                 </div>
                 <div class="tabel-container">
                     <table border="0">
                         <tr>
                             <td>No</td>
-                            <td>Tanggal Daftar</td>
+                            <td>Tanggal daftar</td>
                             <td>NIK</td>
-                            <td>Nama Siswa</td>
-                            <td>Valid?</td>
+                            <td>Nama siswa</td>
+                            <td>Status validasi</td>
                             <td>Keterangan</td>
                             <td>Pengaturan</td>
                         </tr>
                         <?php for($i=1; $i<=15; $i++) : ?>
                             <?php if($i % 2) { ?>
-                                <tr style="background-color: #341a61;">
-                            <?php } else { ?>
                                 <tr style="background-color: #957ac5;">
+                            <?php } else { ?>
+                                <tr style="background-color: #341a61;">
                             <?php } ?>
                                 <td><?= $i ?></td>
                                 <td>23/11/2022</td>
-                                <td>3674043110000005</td>
+                                <td>36740XXXXX0005</td>
                                 <td>Zulfikar Alwi</td>
-                                <td>Tervalidasi</td>
+                                <?php if($i % 2) { ?>
+                                    <td><div class="valid">🟢 valid</div></td>
+                                <?php } else { ?>
+                                    <td><div class="valid no">🔴 tidak valid</div></td>
+                                <?php } ?>
                                 <td>-</td>
                                 <td style="display:flex; justify-content: space-around;">
                                     <a href=""><span class="material-symbols-outlined">draw</span></a>
                                     <a href=""><span class="material-symbols-outlined">print</span></a>
-                                    <a href=""><span class="material-symbols-outlined">delete</span></a>
                                 </td>
                             </tr>
                         <?php endfor; ?>
@@ -109,7 +112,26 @@
             </div>
         </div>
         <div class="content-right">
-            Profile
+            <div class="right-header">
+                <div class="right-title">Profile Kamu</div>
+                <div class="setting-btn"><span class="material-symbols-outlined">settings</span></div>
+            </div>
+            <div class="profile-pict-container">
+                <div class="profile-pict" style="background-image: url(https://ngonoo.com/engine/wp-content/uploads/2015/02/shutterstock_179216297.jpg);"></div>
+            </div>
+            <div class="username-container">
+                <div class="user-name">Zulfikar Alwi</div>
+            </div>
+            <div class="edit-profile-btn">
+                <button>Edit Profile Kamu</button>
+            </div>
+            <div class="detail-container">
+                Nomor Induk Guru Nasional
+                <div class="detail">
+                    <span class="material-symbols-outlined">number</span>
+                    <div class="detail-title">181011450389</div>
+                </div>
+            </div>
         </div>
     </div>
 </body>

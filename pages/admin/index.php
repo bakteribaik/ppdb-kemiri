@@ -27,9 +27,9 @@
                         <input type="checkbox" name="" id="see-pass" placeholder="password">
                         <label for="see-pass">Lihat Password</label>
                     </div><p>
-                    <!-- <input type="submit" name="" id="" value="Login"> -->
+                    <input type="submit" name="" id="" value="Login">
                 </form>
-                <a href="dashboard.php"><button>Login</button></a>
+                <!-- <a href="dashboard.php"><button>Login</button></a> -->
             </div>
         </div>
     </div>
