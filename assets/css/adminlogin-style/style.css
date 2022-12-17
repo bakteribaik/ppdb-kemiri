@@ -58,6 +58,7 @@ body{
     height: 50px;
     width: 300px;
     border: none;
+    padding-left: 10px;
     background-color: rgba(128, 128, 128, 0.151);
     margin-bottom: 20px;
     border-radius: 15px;

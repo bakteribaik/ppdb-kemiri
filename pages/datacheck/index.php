@@ -1,3 +1,32 @@
+<?php
+    include '../../utils/connect.php';
+
+    $hidden = '';
+    $nik = '';
+    $nama = '';
+    $tempat = '';
+    $tanggal = '';
+    $status = '';
+    $keterangan = '';
+
+    if (isset($_POST['submit'])) {
+        $input = $_POST['search-input'];
+        $query = mysqli_query($conn, "SELECT * FROM db_calonsiswa WHERE nik = $input");
+
+        if($row = mysqli_fetch_array($query)){
+            $hidden = 'display:;';
+            $nik = $row['nik'];
+            $nama = $row['nama_calon'];
+            $tempat = $row['tempat_lahir'];
+            $tanggal = $row['tanggal_lahir'];
+            $status = $row['statuses'];
+            $keterangan = $row['keterangan'];
+        }else{
+            echo 'data not exist';
+        }
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,12 +43,12 @@
         </a>
         <span class="navbar-container">
             <div class="navbar-title-container">
-                <div class="navbar-title">Penerimaan Peserta Didik Baru</div>
+                <div class="navbar-title">Penerimaan Peserta Didik Baru Online</div>
                 <div class="navbar-subtitle">SMP Negri 1 Kemiri</div>
             </div>
             <span class="navbar-items">
-                <a href="../home" class="active">Daftarkan calon siswa</a>
-                <a href="">Tatacara Pendaftaran</a>
+                <a href="../pendaftaran/" class="active">Daftarkan calon siswa</a>
+                <a href="../pendaftaran/tatacara.php">Tatacara Pendaftaran</a>
                 <a href="">Bantuan</a>
             </span>
         </span>
@@ -29,23 +58,31 @@
         <div class="content-subtitle">cari hasil validasi data calon peserta didik<br>dengan memasukkan NIK yang digunakan untuk mendaftar sebelumnya</div>
         <div class="search-container">
             <form action="" method="post">
-                <input type="number" name="" id="" placeholder="Masukkan NIK calon Siswa"> <input type="submit" value="🔎">
+                <input type="number" name="search-input" id="" placeholder="Masukkan NIK calon Siswa"> <input name="submit" type="submit" value="🔎">
             </form>
         </div>
         <div class="show-data-container">
-            <div class="show-card" style="border: 1px solid #ff8000;">
+            <div class="show-card" style="<?=$status == 'proses' ? 'border: 1px solid #ff8000;' : ($status == 'valid' ? 'border: 1px solid green;' : 'border: 1px solid red;')?> <?= $hidden != '' ? $hidden : 'display:none;' ?>">
                 <div class="left-data">
                     NIK<p>
                     Nama Lengkap<p>
                     Tanggal Lahir<p>
                     Status<p>
+                    <?=$keterangan != '' ? 'Keterangan' : '' ?>
                 </div>
                 <div class="right-data">
-                    : <strong>36740XXXXX000005</strong><p>
-                    : Zulfikar Alwi<p>
-                    : Tangerang, 31 0ktober 2000<p>
+                    : <strong><?= $nik ?></strong><p>
+                    : <?= $nama ?><p>
+                    : <?= $tempat ?>, <?= $tanggal ?><p>
                     : 
-                        <span class="status">📝 sedang diperiksa</span>
+                    <?php if($status == 'proses') { ?>
+                        <span class="status">data sedang diproses</span><p>
+                    <?php } else if($status == 'valid') { ?>
+                        <span class="status valid">data anda valid</span>&nbsp;<a href="http://localhost/ppdb-kemiri/services/print_service.php?nik=<?=$nik?>"><button>Cetak Bukti Daftar</button></a><p>
+                    <?php } else { ?>
+                        <span class="status not-valid">data tidak valid</span><p>
+                    <?php } ?>
+                    <?=$keterangan != '' ?': '.$keterangan : ''?>
                 </div>
             </div>
         </div>

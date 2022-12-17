@@ -1,3 +1,29 @@
+<?php
+    include '../../utils/connect.php';
+
+    session_start();
+
+    if (empty($_SESSION) == false) {
+        header('location:dashboard.php');
+    }
+    
+    if (isset($_POST['login-btn'])) {
+        $username = $_POST['username'];
+        $pass     = $_POST['pass'];
+
+        $query = mysqli_query($conn, "SELECT * FROM db_admin WHERE username = '$username' AND pass_user = $pass LIMIT 1");
+        $row = mysqli_fetch_array($query);
+        if (mysqli_num_rows($query) == 1) {
+            $_SESSION['username'] = $username;
+            $_SESSION['name'] = $row['nama_user'];
+            header("location:dashboard.php");
+        }else{
+            echo '<script>alert("username/password salah!")</script>';
+        }
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,13 +47,13 @@
             </div>
             <div class="form-container">
                 <form action="" method="post">
-                    <input type="text" name="" id="" placeholder="username"><br>
-                    <input type="password" name="" id="" placeholder="password"><br>
+                    <input type="text" name="username" id="" placeholder="username"><br>
+                    <input type="password" name="pass" id="" placeholder="password"><br>
                     <div class="see-password">
                         <input type="checkbox" name="" id="see-pass" placeholder="password">
                         <label for="see-pass">Lihat Password</label>
                     </div><p>
-                    <input type="submit" name="" id="" value="Login">
+                    <input type="submit" name="login-btn" id="" value="Login">
                 </form>
                 <!-- <a href="dashboard.php"><button>Login</button></a> -->
             </div>

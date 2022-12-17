@@ -1,3 +1,19 @@
+<?php
+    include '../../utils/connect.php';
+
+    session_start();
+    if(empty($_SESSION)){
+        header('location:../admin');
+    }
+
+    $Total = mysqli_query($conn, "SELECT * FROM db_calonsiswa");
+    $Proses = mysqli_query($conn, "SELECT * FROM db_calonsiswa WHERE statuses = 'proses'");
+    $Valid = mysqli_query($conn, "SELECT * FROM db_calonsiswa WHERE statuses = 'valid'");
+    $T = mysqli_num_rows($Total);
+    $P = mysqli_num_rows($Proses);
+    $V = mysqli_num_rows($Valid);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,7 +40,7 @@
                     <span class="material-symbols-outlined" style="font-size:25pt;">folder_open</span>
                 </div>
             </a>
-            <a href="">
+            <a href="../../utils/logout.php">
                 <div class="items logout">
                     <span class="material-symbols-outlined" style="font-size:25pt;">power_settings_new</span>
                 </div>
@@ -34,7 +50,7 @@
     <div class="content-container">
         <div class="content-left">
             <div class="welcome-card">
-                <div class="welcome-title">Selamat Datang, Petugas Zul</div>
+                <div class="welcome-title">Selamat Datang, Petugas <?= $_SESSION['name'] ?></div>
                 <div class="welcome-subtitle">Selamat bertugas, silahkan lihat data pendaftar di bawah ini</div>
             </div>
             <div class="total-container">
@@ -43,7 +59,7 @@
                         <span class="material-symbols-outlined">account_circle</span>
                     </div>
                     <div class="total-header">
-                        <div class="total-title">200</div>
+                        <div class="total-title"><?= $T ?></div>
                         <div class="total-subtitle">Total Pendaftar Calon Siswa</div>
                     </div>
                 </div>
@@ -52,7 +68,7 @@
                         <span class="material-symbols-outlined">account_circle</span>
                     </div>
                     <div class="total-header">
-                        <div class="total-title">200</div>
+                        <div class="total-title"><?= $P ?></div>
                         <div class="total-subtitle">Data yang belum divalidasi</div>
                     </div>
                 </div>
@@ -61,7 +77,7 @@
                         <span class="material-symbols-outlined">account_circle</span>
                     </div>
                     <div class="total-header">
-                        <div class="total-title">200</div>
+                        <div class="total-title"><?= $V ?></div>
                         <div class="total-subtitle">Data yang sudah tervalidasi</div>
                     </div>
                 </div>
@@ -69,10 +85,6 @@
             <div class="list-container">
                 <div class="list-header-container">
                     <div class="list-title">Daftar pendaftar peserta didik baru</div>
-                    <div class="tool-container">
-                        <input type="text" name="" id="" placeholder="Cari data peserta">
-                        <button class="search-btn">Cari</button>
-                    </div>
                 </div>
                 <div class="tabel-container">
                     <table border="0">
@@ -85,28 +97,30 @@
                             <td>Keterangan</td>
                             <td>Pengaturan</td>
                         </tr>
-                        <?php for($i=1; $i<=15; $i++) : ?>
-                            <?php if($i % 2) { ?>
-                                <tr style="background-color: #957ac5;">
-                            <?php } else { ?>
-                                <tr style="background-color: #341a61;">
-                            <?php } ?>
-                                <td><?= $i ?></td>
-                                <td>23/11/2022</td>
-                                <td>36740XXXXX0005</td>
-                                <td>Zulfikar Alwi</td>
-                                <?php if($i % 2) { ?>
-                                    <td><div class="valid">🟢 valid</div></td>
+                        <?php
+                            $i = 1;
+                            $query = mysqli_query($conn, "SELECT * FROM db_calonsiswa ORDER BY tgl_daftar DESC ");
+                            while($row = mysqli_fetch_array($query)) :
+                        ?>
+                            <tr style="background-color: #957ac5;">
+                                <td><?= $i++ ?></td>
+                                <td><?= $row['tgl_daftar'] ?></td>
+                                <td><?= $row['nik'] ?></td>
+                                <td><?= $row['nama_calon'] ?></td>
+                                <?php if($row['statuses'] == 'proses') { ?>
+                                    <td><span class="statuses">belum di proses</span></td>
+                                <?php } else if($row['statuses'] == 'valid') { ?>
+                                    <td><span class="statuses valid">data valid</span></td>
                                 <?php } else { ?>
-                                    <td><div class="valid no">🔴 tidak valid</div></td>
+                                    <td><span class="statuses not-valid">data tidak valid</span></td>
                                 <?php } ?>
-                                <td>-</td>
+                                <td><div class="keterangan"><?= $row['keterangan'] ?></div></td>
                                 <td style="display:flex; justify-content: space-around;">
                                     <a href=""><span class="material-symbols-outlined">draw</span></a>
-                                    <a href=""><span class="material-symbols-outlined">print</span></a>
+                                    <a href="print.php?id=<?=$row['nik']?>"><span class="material-symbols-outlined">print</span></a>
                                 </td>
                             </tr>
-                        <?php endfor; ?>
+                        <?php endwhile; ?>
                     </table>
                 </div>
             </div>
@@ -117,19 +131,26 @@
                 <div class="setting-btn"><span class="material-symbols-outlined">settings</span></div>
             </div>
             <div class="profile-pict-container">
-                <div class="profile-pict" style="background-image: url(https://ngonoo.com/engine/wp-content/uploads/2015/02/shutterstock_179216297.jpg);"></div>
+                <div class="profile-pict" style="background-image: url(https://upload.wikimedia.org/wikipedia/commons/2/2f/No-photo-m.png);"></div>
             </div>
             <div class="username-container">
-                <div class="user-name">Zulfikar Alwi</div>
+                <div class="user-name"><?= $_SESSION['name'] ?></div>
             </div>
             <div class="edit-profile-btn">
                 <button>Edit Profile Kamu</button>
             </div>
             <div class="detail-container">
-                Nomor Induk Guru Nasional
+                <div class="detail-title">NIK</div>
                 <div class="detail">
-                    <span class="material-symbols-outlined">number</span>
-                    <div class="detail-title">181011450389</div>
+                    <span class="material-symbols-outlined">pin</span>
+                    <div class="detail-title">181011450XXX</div>
+                </div>
+            </div>
+            <div class="detail-container">
+                <div class="detail-title">Nomor Pegawai</div>
+                <div class="detail">
+                    <span class="material-symbols-outlined">pin</span>
+                    <div class="detail-title">181011450XXX</div>
                 </div>
             </div>
         </div>
