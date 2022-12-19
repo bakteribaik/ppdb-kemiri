@@ -9,7 +9,7 @@
 </head>
 <body>
 <div class="navbar">
-        <span class="navbar-title">Galerry SMP Negri 1 Kemiri</span>
+        <span class="navbar-title">Galery SMP Negri 1 Kemiri</span>
         <span class ="navbar-menu">
             <a href="../home">Home</a>
             <a href="../visiMisi">Visi Misi</a>
@@ -17,10 +17,11 @@
             <div class="dropdown">
             <a href="" class="dropdown-btn">Menu Lainnya</a>
                 <div class="dropdown-content">
-                    <a href="../tujuan">Tujuan SMPN 1 Kemiri</a>
-                    <a href="../pengembangan-diri">Kegiatan Pengembangan Diri</a>
-                    <a href="../pendaftaran">Kegiatan Lingkungan</a>
-                    <a href="">Gallery</a>
+                    <a href="../prestasi">👑 Prestasi</a>
+                    <a href="../tujuan">🎉 Tujuan SMPN 1 Kemiri</a>
+                    <a href="../pengembangan-diri">🏃‍♀️ Kegiatan Pengembangan Diri</a>
+                    <a href="../kegiatan-lingkungan">🧘‍♂️ Kegiatan Lingkungan</a>
+                    <a href="../gallery">📷 Gallery</a>
                 </div>
             </div>
         </span>

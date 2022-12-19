@@ -9,7 +9,7 @@
 body{
     margin: 0;
     font-family: 'Poppins';
-    background-image: url('../../images/home-bg.png');
+    background-image: url('../../images/reward-bg.png');
     background-size: cover;
     background-repeat: no-repeat;
     overflow: hidden;
@@ -67,35 +67,26 @@ body{
     height: 100vh;
     display: flex;
     align-items: center;
-    padding-left: 50px;
 }
-.pengembangan-container{
+.content{
+    margin-left: 100px;
     display: flex;
-    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px;
 }
-.pengembangan-card{
-    min-height: 200px;
-    width: 200px;
-    margin: 20px;
+.prestasi-card{
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
     background-color: #7655b3;
-    border-radius: 15px;
-    box-shadow: 0px 0px 20px rgba(128, 128, 128, 0.39);
+    color: white;
     transition: all .2s ease-in-out;
 }
-.pengembangan-icon{
-    border-top-left-radius: 14px;
-    border-top-right-radius: 14px;
-    height: 100px;
-    width: 200px;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
+.prestasi-card:hover{
+    transform: scale(1.2);
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.774);
+    z-index: 1;
 }
-.pengembangan{
-    padding: 10px;
-    text-align: center;
-    color: white;
-}
-.pengembangan-card:hover{
-    transform: scale(1.1);
+.content:hover .prestasi-card:not(:hover){
+    opacity: 0.5;
 }

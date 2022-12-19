@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../assets/css/home-style/style.css">
-    <title>Document</title>
+    <title>Home | SMP Negri 1 Kemiri</title>
 </head>
 <body>
     <div class="navbar">
@@ -16,10 +16,11 @@
             <div class="dropdown">
             <a href="" class="dropdown-btn">Menu Lainnya</a>
                 <div class="dropdown-content">
-                    <a href="../tujuan">Tujuan SMPN 1 Kemiri</a>
-                    <a href="../pengembangan-diri">Kegiatan Pengembangan Diri</a>
-                    <a href="../pendaftaran">Kegiatan Lingkungan</a>
-                    <a href="../gallery">Gallery</a>
+                    <a href="../prestasi">👑 Prestasi</a>
+                    <a href="../tujuan">🎉 Tujuan SMPN 1 Kemiri</a>
+                    <a href="../pengembangan-diri">🏃‍♀️ Kegiatan Pengembangan Diri</a>
+                    <a href="../kegiatan-lingkungan">🧘‍♂️ Kegiatan Lingkungan</a>
+                    <a href="../gallery">📷 Gallery</a>
                 </div>
             </div>
         </span>

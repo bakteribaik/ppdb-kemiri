@@ -17,10 +17,11 @@
             <div class="dropdown">
             <a href="" class="dropdown-btn">Menu Lainnya</a>
                 <div class="dropdown-content">
-                    <a href="../tujuan">Tujuan SMPN 1 Kemiri</a>
-                    <a href="">Kegiatan Pengembangan Diri</a>
-                    <a href="../pendaftaran">Kegiatan Lingkungan</a>
-                    <a href="../gallery">Gallery</a>
+                    <a href="../prestasi">👑 Prestasi</a>
+                    <a href="../tujuan">🎉 Tujuan SMPN 1 Kemiri</a>
+                    <a href="../pengembangan-diri">🏃‍♀️ Kegiatan Pengembangan Diri</a>
+                    <a href="../kegiatan-lingkungan">🧘‍♂️ Kegiatan Lingkungan</a>
+                    <a href="../gallery">📷 Gallery</a>
                 </div>
             </div>
         </span>
