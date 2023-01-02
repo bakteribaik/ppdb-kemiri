@@ -116,7 +116,7 @@
                                 <?php } ?>
                                 <td><div class="keterangan"><?= $row['keterangan'] ?></div></td>
                                 <td style="display:flex; justify-content: space-around;">
-                                    <a href=""><span class="material-symbols-outlined">draw</span></a>
+                                    <a href="edit.php?id=<?=$row['nik']?>"><span class="material-symbols-outlined">draw</span></a>
                                     <a href="print.php?id=<?=$row['nik']?>"><span class="material-symbols-outlined">print</span></a>
                                 </td>
                             </tr>
